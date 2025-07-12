@@ -9,5 +9,5 @@ permissions:
 
 jobs:
   publish:
-    uses: reallifedeveloper/github-workflows/.github/workflows/maven-deploy.yaml@v20250712.11
+    uses: reallifedeveloper/github-workflows/.github/workflows/maven-deploy.yaml@v20250712.12
     secrets: inherit

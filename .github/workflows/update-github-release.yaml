@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   upload:
-    uses: reallifedeveloper/github-workflows/.github/workflows/upload-signed-source.yaml@v20250712.11
+    uses: reallifedeveloper/github-workflows/.github/workflows/upload-signed-source.yaml@v20250712.12
     secrets: inherit
     permissions:
       contents: write
