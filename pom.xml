@@ -11,7 +11,7 @@
     <version>4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>${project.groupId}:${project.artifactId}</name>
+    <name>RealLifeDeveloper Root POM</name>
     <description>The common grandfather of all POMs and BOMs uesd by RealLifeDeveloper projects.</description>
     <url>https://reallifedeveloper.com/</url>
 
