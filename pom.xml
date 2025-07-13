@@ -97,9 +97,6 @@
     <profiles>
         <profile>
             <id>sonatype</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <distributionManagement>
                 <snapshotRepository>
                     <id>ossrh</id>
@@ -110,6 +107,18 @@
                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
                 </repository>
             </distributionManagement>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>sonatype-central</publishingServerId>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <profile>
             <id>github</id>
@@ -181,14 +190,6 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.sonatype.central</groupId>
-                        <artifactId>central-publishing-maven-plugin</artifactId>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <publishingServerId>sonatype-central</publishingServerId>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
