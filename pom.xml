@@ -24,7 +24,7 @@
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>https://opensource.org/license/mit</url>
+            <url>LICENSE</url>
         </license>
     </licenses>
 
@@ -63,6 +63,22 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.21.0</version>
+                    <configuration>
+                        <relativizeSiteLinks>false</relativizeSiteLinks>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <!-- Adds support for scp when deploying the site -->
+                            <groupId>org.apache.maven.wagon</groupId>
+                            <artifactId>wagon-ssh</artifactId>
+                            <version>3.5.3</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
