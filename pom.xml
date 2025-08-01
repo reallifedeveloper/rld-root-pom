@@ -8,7 +8,7 @@
 
     <groupId>com.reallifedeveloper</groupId>
     <artifactId>rld-root-pom</artifactId>
-    <version>10-SNAPSHOT</version>
+    <version>11-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>RealLifeDeveloper Root POM</name>
