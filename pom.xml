@@ -17,6 +17,12 @@
 
     <properties>
         <minimum.maven.version>3.6.3</minimum.maven.version>
+
+        <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
+        <maven-site-plugin.version>3.21.0</maven-site-plugin.version>
+        <wagon-ssh.version>3.5.3</wagon-ssh.version>
+        <mwiede.jsch.version>2.27.2</mwiede.jsch.version>
+
         <!-- Override the following in a profile in ~/.m2/settings.xml -->
         <reallifedeveloper-site.distributionManagement.url>scp://my.site.com/site</reallifedeveloper-site.distributionManagement.url>
     </properties>
@@ -65,24 +71,8 @@
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.21.0</version>
-                    <configuration>
-                        <relativizeSiteLinks>false</relativizeSiteLinks>
-                    </configuration>
-                    <dependencies>
-                        <dependency>
-                            <!-- Adds support for scp when deploying the site -->
-                            <groupId>org.apache.maven.wagon</groupId>
-                            <artifactId>wagon-ssh</artifactId>
-                            <version>3.5.3</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>${maven-enforcer-plugin.version}</version>
                     <configuration>
                         <rules>
                             <requireMavenVersion>
@@ -91,6 +81,34 @@
                         </rules>
                         <fail>true</fail>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                    <configuration>
+                        <relativizeSiteLinks>false</relativizeSiteLinks>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <!-- Adds support for scp when deploying the site -->
+                            <groupId>org.apache.maven.wagon</groupId>
+                            <artifactId>wagon-ssh</artifactId>
+                            <version>${wagon-ssh.version}</version>
+                            <exclusions>
+                                <exclusion>
+                                    <groupId>com.jcraft</groupId>
+                                    <artifactId>jsch</artifactId>
+                                </exclusion>
+                            </exclusions>
+                        </dependency>
+                        <!-- Replace the old jsch library with a newer version: https://github.com/mwiede/jsch -->
+                        <dependency>
+                            <groupId>com.github.mwiede</groupId>
+                            <artifactId>jsch</artifactId>
+                            <version>${mwiede.jsch.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>
