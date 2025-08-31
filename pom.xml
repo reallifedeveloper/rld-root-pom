@@ -18,10 +18,14 @@
     <properties>
         <minimum.maven.version>3.6.3</minimum.maven.version>
 
-        <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
+        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>3.11.3</maven-javadoc-plugin.version>
+        <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
+        <maven-enforcer-plugin.version>3.6.1</maven-enforcer-plugin.version>
         <maven-site-plugin.version>3.21.0</maven-site-plugin.version>
         <wagon-ssh.version>3.5.3</wagon-ssh.version>
-        <mwiede.jsch.version>2.27.2</mwiede.jsch.version>
+        <mwiede.jsch.version>2.27.3</mwiede.jsch.version>
+        <sonatype.central-publishing-maven-plugin.version>0.8.0</sonatype.central-publishing-maven-plugin.version>
 
         <!-- Override the following in a profile in ~/.m2/settings.xml -->
         <reallifedeveloper-site.distributionManagement.url>scp://my.site.com/site</reallifedeveloper-site.distributionManagement.url>
@@ -78,6 +82,9 @@
                             <requireMavenVersion>
                                 <version>${minimum.maven.version}</version>
                             </requireMavenVersion>
+                            <dependencyConvergence />
+                            <banDynamicVersions />
+                            <requireSameVersions />
                         </rules>
                         <fail>true</fail>
                     </configuration>
@@ -109,6 +116,26 @@
                             <version>${mwiede.jsch.version}</version>
                         </dependency>
                     </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${maven-gpg-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.central</groupId>
+                    <artifactId>central-publishing-maven-plugin</artifactId>
+                    <version>${sonatype.central-publishing-maven-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -175,6 +202,9 @@
                                 <requireMavenVersion>
                                     <version>${minimum.maven.version}</version>
                                 </requireMavenVersion>
+                                <dependencyConvergence />
+                                <banDynamicVersions />
+                                <requireSameVersions />
                                 <requireReleaseVersion />
                                 <requireReleaseDeps />
                             </rules>
