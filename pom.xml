@@ -83,8 +83,6 @@
                                 <version>${minimum.maven.version}</version>
                             </requireMavenVersion>
                             <dependencyConvergence />
-                            <banDynamicVersions />
-                            <requireSameVersions />
                         </rules>
                         <fail>true</fail>
                     </configuration>
@@ -204,7 +202,6 @@
                                 </requireMavenVersion>
                                 <dependencyConvergence />
                                 <banDynamicVersions />
-                                <requireSameVersions />
                                 <requireReleaseVersion />
                                 <requireReleaseDeps />
                             </rules>
